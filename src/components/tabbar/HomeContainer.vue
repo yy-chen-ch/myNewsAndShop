@@ -51,23 +51,27 @@ export default {
     },
     methods: {
         getLunbotu() {
-            // var $vm = this;
-            // $.ajax({
-            //     url: '../../../data/lubotu.json',
-            //     async: false,
-            //     success: function(data){
-            //         $vm.lunbotulist = data.message;
-            //     }
-            // })
-            this.$http.get("../../../data/lubotu.json").then(result => {
-                console.log(result.body);
-                if (result.body.status === 0) {
-                    this.lunbotulist = result.body.message;
-                    alert('获取新闻列表成功');
-                } else {
-                    alert("获取新闻列表失败");
-                }       
+            var $vm = this;
+            $.ajax({
+                type: "get",
+                url: '../../../data/lubotu.json',
+                data: {},
+                dataType:"json",
+                async: false,
+                success: function(data){
+                    console.log(data)
+                    $vm.lunbotulist = data.message;
+                }
             })
+            // this.$http.get("../../../data/lubotu.json").then(result => {
+            //     console.log(result.body);
+            //     if (result.body.status === 0) {
+            //         this.lunbotulist = result.body.message;
+            //         alert('获取新闻列表成功');
+            //     } else {
+            //         alert("获取新闻列表失败");
+            //     }       
+            // })
         }
     },
     components: {
