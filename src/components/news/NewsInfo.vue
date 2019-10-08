@@ -1,16 +1,16 @@
 <template>
     <div class="newsinfo-container">
         <!-- 标题 -->
-        <h3 class="title">{{ newsinfo.title }}</h3>
+        <h3 class="title">{{ newsInfo.title }}</h3>
         <p class="subtitle">
-            <span>发表时间：{{ newsinfo.add_time | dateFormat}}</span>
-            <span>点击： {{ newsinfo.click_count }}次</span>
+            <span>发表时间：{{ newsInfo.add_time | dateFormat}}</span>
+            <span>点击： {{ newsInfo.click_count }}次</span>
         </p>
         <hr>
         <!-- 内容 -->
-        <div class="content">{{ newsinfo.content }}</div>
+        <div class="content">{{ newsInfo.content }}</div>
         <!-- 评论 -->
-        <comment-box :id="this.id"></comment-box>
+        <comment-box></comment-box>
     </div>
 </template>
 <script>
@@ -20,7 +20,7 @@ export default {
     data() {
         return {
             id: this.$route.params.id,
-            newsinfo: []
+            newsInfo: []
         }
     },
     created () {
@@ -29,15 +29,15 @@ export default {
     methods: {
         getNewsInfo(){
             var $vm = this;
-            $(document).ready(function(){
-                $.ajax({
-                    url: "../../../data/newslist.json",
-                    async: false,
-                    success: function(data){
-                        $vm.newsinfo = data.message[$vm.id - 1]
-                    }
-
-                })
+            $.ajax({
+                type: "get",
+                url: 'data/news/news_lists.json',
+                data: {},
+                dataType:"json",
+                async: false,
+                success: function(data){
+                    $vm.newsInfo = data.message[$vm.id - 1];
+                }
             })
         }
     },

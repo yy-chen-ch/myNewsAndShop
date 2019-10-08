@@ -36,15 +36,11 @@ export default {
     },
     methods: {
         getCatesGory(){
-            // this.$http.get("http://localhost:5501/data/catesgory.json")
-            // .then(function(result){
-            //     if(result.body.status === 0){
-            //         this.cates = result.body.message;
-            //     }
-            // })
             var $vm = this;
             $.ajax({
-                url: '../../../data/catesgory.json',
+                url: 'data/photoSharing/catesgory.json',
+                type: "get",
+                dataType: "json",
                 async: false,
                 success: function(data){
                     $vm.cates = data.message;
@@ -52,15 +48,11 @@ export default {
             })
         },
         getPhotoList(cateId){
-            // this.$http.get("http://localhost:5501/data/getImages/"+cateId+".json")
-            // .then(function(result){
-            //     if(result.body.status === 0){
-            //         this.list = result.body.message;
-            //     }
-            // })
             var $vm = this;
             $.ajax({
-                url: '../../../data/getImages/'+cateId+'.json',
+                url: 'data/photoSharing/'+cateId+'.json',
+                type: "get",
+                dataType: "json",
                 async: false,
                 success: function(data){
                     $vm.list = data.message;
@@ -70,7 +62,7 @@ export default {
     },
     created(){
         this.getCatesGory()
-        this.getPhotoList(0)
+        this.getPhotoList("all")
     },
     mounted() {
         mui('.mui-scroll-wrapper').scroll({

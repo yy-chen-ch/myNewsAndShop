@@ -1,7 +1,7 @@
 <template>
     <div class="goods-list">
         <div class="goods-item" v-for="item in goodslist" :key="item.id" @click="godetail(item.id)">
-            <img :src="item.img_url" alt="">
+            <img :src="item.img_url[0]" alt="">
             <h1 class="title">{{ item.title }}</h1>
             <div class="info">
                 <p class="price">
@@ -14,20 +14,6 @@
                 </p>
             </div>
         </div>
-        <!-- <router-link class="goods-item" v-for="item in goodslist" :key="item.id" :to="'/home/goodsinfo/'+item.id">
-            <img :src="item.img_url" alt="">
-            <h1 class="title">{{ item.title }}</h1>
-            <div class="info">
-                <p class="price">
-                    <span class="now">￥{{ item.now }}</span>
-                    <span class="old">￥{{ item.old }}</span>
-                </p>
-                <p class="sell">
-                    <span>热卖中</span>
-                    <span>剩{{ item.rest }}件</span>
-                </p>
-            </div>
-        </router-link> -->
         <mt-button type="primary" size="large" plain @click="getmore()">加载更多</mt-button>
     </div>
 </template>
@@ -37,7 +23,6 @@ import { Toast } from 'mint-ui'
 export default {
     data(){
         return {
-            page: 1,
             goodslist: []
         }
     },
@@ -45,15 +30,16 @@ export default {
         getgoodslist (){
             var $vm = this;
             $.ajax({
-                url: '../../../data/goods/'+$vm.page+'.json',
+                url: 'data/shop/shopInfo.json',
+                type: "get",
+                dataType: "json",
                 async: false,
                 success: function(data){
-                    $vm.goodslist = $vm.goodslist.concat(data.message);
+                    $vm.goodslist = data.message
                 }
             })
         },
         getmore (){
-            this.page++;
             this.getgoodslist()
         },
         godetail(id){
@@ -93,6 +79,8 @@ export default {
     background-color: #eee;
 }
 .goods-item .info p{
+    display: flex;
+    justify-content: space-between;
     margin: 0;
     padding: 5px;
 }

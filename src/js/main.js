@@ -13,7 +13,6 @@ var store = new Vuex.Store({
   },
   mutations: {
     addToCar(state, goodsinfo){
-
       var flag = false
       state.car.some(item => {
         if(item.id == goodsinfo.id){
@@ -22,7 +21,6 @@ var store = new Vuex.Store({
           return true
         }
       })
-
       if(!flag) {
         state.car.push(goodsinfo)
       }

@@ -23,6 +23,7 @@ import { Toast } from "mint-ui"
 export default {
     data(){
         return {
+            id: this.$route.params.id,
             comment: [],
             msg: ""
         }
@@ -32,18 +33,12 @@ export default {
     },
     methods: {
         getComments(){
-            // this.$http
-            // .get("http://localhost:5501/data/comment.json")
-            // .then(result => {
-            //     if(result.body.status === 0){
-            //         this.comment = result.body.message;
-            //     } else {
-            //         Toast("获取评论失败")
-            //     }
-            // })
             var $vm = this
             $.ajax({
-                url: '../../../data/comment.json',
+                type: "get",
+                url: 'data/news/comment_'+$vm.id+'.json',
+                data: {},
+                dataType:"json",
                 async: false,
                 success: function(data){
                     $vm.comment = data.message;
@@ -51,41 +46,15 @@ export default {
             })
         },
         postComment(){
-            // this.$http
-            // .post("http://localhost:5501/data/comment.json", {
-            //     content: this.msg.trim()
-            // })
-            // .then(function(result){
-            //     if(result.body.status === 0) {
-            //         var da = {
-            //             user_name: "匿名用户",
-            //             add_time: Date.now(),
-            //             content: this.msg.trim()
-            //         };
-            //         this.comments.unshift(da);
-            //         this.msg = "";
-            //     }
-            // })
-            var $vm = this
-            $.ajax({
-                url: '../../../data/comment.json',
-                type: "POST",
-                datatype: "JSON",
-                async: false,
-                data: {
+            var data = {
                     user_name: "匿名用户",
                     add_time: Date.now(),
                     content: this.msg.trim()
-                },
-                success: function(data,obj){
-                    // $vm.comment = data.message;
-                    console.log(data)
-                    console.log(obj)
-                }
-            })
+            }
+            this.comment.unshift(data)
+            this.msg = ""
         }
-    },
-    props: ["id"]
+    }
 }
 </script>
 <style scoped>

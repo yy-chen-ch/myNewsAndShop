@@ -10,21 +10,21 @@
         <div class="mui-card">
             <div class="mui-card-content">
                 <div class="mui-card-content-inner">
-                    <swiper :lunbotulist="lunbotulist" :isfull="false"></swiper>
+                    <swiper :lunbotulist="goodsInfo.img_url" :isfull="false"></swiper>
                 </div>
             </div>
         </div>
         <!-- 商品购买区域 -->
         <div class="mui-card">
-				<div class="mui-card-header">商品名称标题</div>
+				<div class="mui-card-header">{{ goodsInfo.title }}</div>
 				<div class="mui-card-content">
 					<div class="mui-card-content-inner">
 						<p class="price">
-                            市场价：<del>￥2399</del>&nbsp;&nbsp;
-                            销售价：<span class="now">￥2199</span>
+                            市场价：<del>￥{{ goodsInfo.old }}</del>&nbsp;&nbsp;
+                            销售价：<span class="now">￥{{ goodsInfo.now }}</span>
                         </p>
                         <p>购买数量</p>  
-                        <numberbox @getcount="getselectnumber" @tocar="ballmove" :max="35"></numberbox>  
+                        <numberbox @getcount="getselectnumber" @tocar="ballmove" :max="goodsInfo.rest"></numberbox>  
                         <p>
                             <mt-button type="primary" size="small">立即购买</mt-button>
                             <mt-button type="danger" size="small" @click="ballmove">加入购物车</mt-button>
@@ -37,8 +37,8 @@
 				<div class="mui-card-header">商品参数</div>
 				<div class="mui-card-content">
 					<div class="mui-card-content-inner">
-						<p>商品货号: q2r343452345</p>
-                        <p>库存情况：35件</p>
+						<p>商品货号: {{ goodsInfo.item }}</p>
+                        <p>库存情况：{{ goodsInfo.rest }}件</p>
                         <p>上架时间：2015.06.30</p>
 					</div>
 				</div>
@@ -57,7 +57,7 @@ export default {
     data() {
         return {
             id: this.$route.params.id,
-            lunbotulist: [],
+            goodsInfo: [],
             ballflag: false,
             selectnumber: 1
         }
@@ -66,15 +66,12 @@ export default {
         getlunbotu(){
             var $vm = this;
             $.ajax({
-                url: '../../../data/goods/'+$vm.id+'.json',
+                url: 'data/shop/shopInfo.json',
+                type: "get",
+                dataType: "json",
                 async: false,
                 success: function(data){
-                    for(var i = 0; i < data.message.length; i++){
-                        if(data.message[i].id == $vm.id){
-                            $vm.lunbotulist.push(data.message[i])
-                            return $vm.lunbotulist.push(data.message[i])
-                        }
-                    }
+                    $vm.goodsInfo = data.message[$vm.id]
                 }
             })
         },
@@ -82,8 +79,10 @@ export default {
             this.ballflag = true
             var goodsinfo = {
                 id: this.id,
+                title: this.goodsInfo.title,
                 count: this.selectnumber,
-                price: 2199,
+                price: this.goodsInfo.now,
+                img_url: this.goodsInfo.img_url[0],
                 selected: true
             }
             this.$store.commit('addToCar',goodsinfo)

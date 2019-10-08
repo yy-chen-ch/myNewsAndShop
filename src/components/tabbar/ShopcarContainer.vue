@@ -6,9 +6,9 @@
 				<div class="mui-card-content">
 					<div class="mui-card-content-inner">
 						<mt-switch v-model="item.selected" @change="selectedchanged(item.id, item.selected)"></mt-switch> 
-                        <img src="http://i1.fuimg.com/692913/f7365e0fbfebc1de.png" alt="">
+                        <img :src="item.img_url" alt="">
                         <div class="info">
-                            <h1>小米6</h1>
+                            <h1>{{ item.title }}</h1>
                             <p>
                                 <span class="price">￥{{ item.price }}</span>
                                 <numbox :count="item.count" :goodsid="item.id"></numbox>

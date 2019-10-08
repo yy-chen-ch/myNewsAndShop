@@ -2,7 +2,7 @@
     <div>
         <mt-swipe :auto="4000">
             <mt-swipe-item v-for=" item in lunbotulist" :key="item.title">
-                <img :src="item.img_url" :class="{ full: isfull }">
+                <img :src="item.img_url || item" :class="{ full: isfull }">
             </mt-swipe-item>
         </mt-swipe>
     </div>

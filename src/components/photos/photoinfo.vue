@@ -21,10 +21,15 @@ export default {
     },
     methods: {
         getPhotoInfo () {
-            this.$http.get('')
-            .then(result=>{
-                if(result.body.status === 0){
-                    this.photoinfo = result.body.message
+            var $vm = this
+            $.ajax({
+                type: "get",
+                url: 'data/photoinfo.json',
+                data: {},
+                dataType:"json",
+                async: false,
+                success: function(data){
+                    $vm.photoinfo = data.message;
                 }
             })
         }
