@@ -54,7 +54,7 @@ export default {
             var $vm = this;
             $.ajax({
                 type: "get",
-                url: 'data/lubotu.json',
+                url: 'myNewsAndShop/master/data/lubotu.json',
                 data: {},
                 dataType:"json",
                 async: false,
