@@ -54,7 +54,7 @@ export default {
             var $vm = this;
             $.ajax({
                 type: "get",
-                url: 'data/lunbotu/lunbotu_index.json',
+                url: '../../../data/lunbotu/lunbotu_index.json',
                 data: {},
                 dataType:"json",
                 async: false,
