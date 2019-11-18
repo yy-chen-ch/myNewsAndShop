@@ -1,0 +1,33 @@
+{
+    "status": 0,
+    "message": [
+        {
+            "id": "all",
+            "title": "全部"
+        },
+        {
+            "id": "recom",
+            "title": "推荐"
+        },
+        {
+            "id": "topic",
+            "title": "热点"
+        },
+        {
+            "id": "beijing",
+            "title": "北京"
+        },
+        {
+            "id": "society",
+            "title": "社会"
+        },
+        {
+            "id": "amuse",
+            "title": "娱乐"
+        },
+        {
+            "id": "technology",
+            "title": "科技"
+        } 
+    ]    
+}

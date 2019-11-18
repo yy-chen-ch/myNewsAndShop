@@ -1,0 +1,117 @@
+{
+    "title": "会员价格",
+    "message": {
+        "vip": [
+            {
+                "limit": "首月12元",
+                "title": "连续包月",
+                "price": 15,
+                "content": "每月自动续费，可随时关闭",
+                "integral": 150,
+                "v": 150,
+                "coupon": "该套餐不支持使用优惠券"
+            },
+            {
+                "limit": "季卡40元",
+                "title": "3个月",
+                "price": 58,
+                "content": "19.3/月",
+                "integral": 580,
+                "v": 400,
+                "coupon": "该套餐无可用优惠券"
+            },
+            {
+                "limit": "",
+                "title": "连续包季",
+                "price": 45,
+                "content": "每季自动续费，可随时关闭",
+                "integral": 450,
+                "v": 450,
+                "coupon": "该套餐不支持使用优惠券"
+            },
+            {
+                "limit": "",
+                "title": "连续包年",
+                "price": 178,
+                "content": "每年自动续费，可随时关闭",
+                "integral": 1780,
+                "v": 1850,
+                "coupon": "该套餐不支持使用优惠券"
+            },
+            {
+                "limit": "",
+                "title": "12个月",
+                "price": 198,
+                "content": "16.5/月",
+                "integral": 1980,
+                "v": 1800,
+                "coupon": "该套餐无可用优惠券"
+            },
+            {
+                "limit": "",
+                "title": "1个月",
+                "price": 20,
+                "content": "20元/月",
+                "integral": 200,
+                "v": 100,
+                "coupon": "该套餐无可用优惠券"
+            }
+        ],
+        "superVip":  [
+                {
+                    "limit": "限新用户",
+                    "title": "连续包月",
+                    "price": 22,
+                    "content": "次月30元/月自动续费",
+                    "integral": 220,
+                    "v": 275,
+                    "coupon": "该套餐不支持使用优惠券"
+                },
+                {
+                    "limit": "限新用户",
+                    "title": "连续包季",
+                    "price": 73,
+                    "content": "次季88元/季自动续费",
+                    "integral": 730,
+                    "v": 825,
+                    "coupon": "该套餐不支持使用优惠券"
+                },
+                {
+                    "limit": "限新用户",
+                    "title": "连续包年",
+                    "price": 268,
+                    "content": "次年30元/年自动续费",
+                    "integral": 2680,
+                    "v": 3355,
+                    "coupon": "该套餐不支持使用优惠券"
+                },
+                {
+                    "limit": "立省70元",
+                    "title": "3个月",
+                    "price": 78,
+                    "content": "原价148元",
+                    "integral": 780,
+                    "v": 770,
+                    "coupon": "该套餐不支持使用优惠券"
+                },
+                {
+                    "limit": "立省200元",
+                    "title": "12个月",
+                    "price": 288,
+                    "content": "原价488元",
+                    "integral": 2880,
+                    "v": 3300,
+                    "coupon": "该套餐不支持使用优惠券"
+                },
+                {
+                    "limit": "",
+                    "title": "1个月",
+                    "price": 50,
+                    "content": "50元/月",
+                    "integral": 500,
+                    "v": 220,
+                    "coupon": "该套餐无可用优惠券"
+                }
+            ]  
+    }
+}
